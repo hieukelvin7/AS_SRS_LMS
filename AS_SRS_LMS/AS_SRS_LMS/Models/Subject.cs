@@ -11,8 +11,11 @@ namespace AS_SRS_LMS.Models
         public string SubjectName { get; set; }
 
         public int NumberOfPeriod { get; set; }
-
-        public List<DetailSubject> DetailSubjects { get; set; }
+        public int ExamId { get; set; }
+        public Exam Exam { get; set; }
+        public List<Class> Class { get; set; }
+        public List<Question> Questions { get; set; }
+        public List<Schedule> Schedules { get; set; }
 
         public List<Document> Documents { get; set; }
 

@@ -14,9 +14,8 @@ namespace AS_SRS_LMS.Models
 
         public DayOfWeek DayOfWeek { get; set; }
 
-        [ForeignKey("DetailSubject")]
-        public int DetailSubjectId { get; set; }
-        public DetailSubject DetailSubject { get; set; }
+       public int SubjectId { get; set; }
+        public Subject Subject { get; set; }
 
 
     }

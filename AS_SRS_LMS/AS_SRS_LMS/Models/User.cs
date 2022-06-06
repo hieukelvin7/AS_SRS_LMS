@@ -17,12 +17,11 @@ namespace AS_SRS_LMS.Models
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string PhoneNumber { get; set; }
-        public bool IsEmailConfirmed { get; set; }
-        public string Role { get; set; }
-
-        public List<DetailCourse> DetailCourses { get; set; }
+        public bool IsEmailConfirmed { get; set; } 
         
-        public List<Exam> Exam { get; set; }
+        
+        public int RoleId { get; set; }
+        public Role Role { get; set; }
         public int ClassId { get; set; }
         public Class Class { get; set; }
 
