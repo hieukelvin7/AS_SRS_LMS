@@ -9,9 +9,9 @@ namespace AS_SRS_LMS.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RoleId { get; set; }
         public string RoleName { get; set; }
-        public string Status { get; set; }
+        public string? Status { get; set; }
 
+        public List<User> Users { get; set; }
         
-        public List<User> User { get; set; }
     }
 }

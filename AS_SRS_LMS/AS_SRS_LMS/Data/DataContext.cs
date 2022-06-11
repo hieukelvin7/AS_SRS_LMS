@@ -19,5 +19,8 @@ namespace AS_SRS_LMS.Data
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Exam> Exams { get; set; }
         public DbSet<Document> Documents { get; set; }
+        
+        
     }
+    
 }

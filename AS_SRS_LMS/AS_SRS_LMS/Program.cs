@@ -1,5 +1,8 @@
+using AS_SRS_LMS;
 using AS_SRS_LMS.Data;
+using AS_SRS_LMS.Models;
 using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    
 });
+builder.Services.AddScoped<IUserRegister, UserRegister>();
+//builder.Services.AddTransient<IUserRegister, UserRegister>();
+//builder.Services.AddScoped<IUserRegister, UserRegister>();
+//builder.Services.AddSingleton<IUserRegister, UserRegister>();
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

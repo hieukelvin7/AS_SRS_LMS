@@ -4,6 +4,7 @@ using AS_SRS_LMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AS_SRS_LMS.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220610110408_db4")]
+    partial class db4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -290,8 +292,8 @@ namespace AS_SRS_LMS.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("LastName")
+                        .HasColumnType("int");
 
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("varbinary(max)");
@@ -308,12 +310,8 @@ namespace AS_SRS_LMS.Migrations
                     b.Property<DateTime?>("ResetTokenExpires")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RoleId")
+                    b.Property<int?>("RoleId")
                         .HasColumnType("int");
-
-                    b.Property<string>("RoleName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("VerificationToken")
                         .HasColumnType("nvarchar(max)");
@@ -412,13 +410,9 @@ namespace AS_SRS_LMS.Migrations
 
             modelBuilder.Entity("AS_SRS_LMS.Models.User", b =>
                 {
-                    b.HasOne("AS_SRS_LMS.Models.Role", "Role")
+                    b.HasOne("AS_SRS_LMS.Models.Role", null)
                         .WithMany("Users")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
+                        .HasForeignKey("RoleId");
                 });
 
             modelBuilder.Entity("AS_SRS_LMS.Models.Role", b =>

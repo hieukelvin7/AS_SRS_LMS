@@ -14,9 +14,9 @@ namespace AS_SRS_LMS.Models
 
         public DateTime EndDate { get; set; }
         public bool Status { get; set; }
-        
-        public int UserId { get; set; }
-        public List<User> Users { get; set; }
+   
+        public int SubjectId { get; set; }
+        public Subject Subject { get; set; }
 
     }
 }
