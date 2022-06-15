@@ -2,7 +2,7 @@
 
 namespace AS_SRS_LMS.Models
 {
-    public class ClassAddRequest
+    public class ClassRequest
     {
         [Required]
         public string ClassName { get; set; } = string.Empty;
@@ -11,6 +11,8 @@ namespace AS_SRS_LMS.Models
         [Required]
         public DateTime EndDate { get; set; }
         [Required]
-        public int SubjectId { get; set; }
+        public int UserId { get; set; }
+        
+        
     }
 }

@@ -3,20 +3,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AS_SRS_LMS.Models
 {
-    public class Result
+    public class ContentExam
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ResultId { get; set; }
+        public int ContentId { get; set; }
         public float Score { get; set; }
-        public DateTime ExamDate { get; set; }
-
-
+        public int NumberCorrect { get; set; }
         public int ExamId { get; set; }
         public Exam Exam { get; set; }
-
-        public int UserId { get; set; }
-        public User User { get; set; }
-
+        public List<Question> Questions { get; set; }
     }
 }

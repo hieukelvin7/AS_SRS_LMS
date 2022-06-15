@@ -16,8 +16,8 @@ namespace AS_SRS_LMS.Models
         public string AnswerCorrect{ get; set; }
      
 
-        public int SubjectId { get; set; }
-        public Subject Subject { get; set; }
+        public int ContentId { get; set; }
+        public ContentExam ContentExam { get; set; }
 
 
     }

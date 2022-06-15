@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AS_SRS_LMS.Models
 {
-    public class User
+    public class Student
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
+        public int StudentId { get; set; }
         //public string UserName { get; set; }      
-        public string Email { get; set; } = string.Empty;  
+        public string Email { get; set; } = string.Empty;
         public byte[]? PasswordHash { get; set; } = new byte[32];
         public byte[]? PasswordSalt { get; set; } = new byte[32];
         public string? FirstName { get; set; }
@@ -23,14 +23,5 @@ namespace AS_SRS_LMS.Models
 
         public string? PasswordResetToken { get; set; }
         public DateTime? ResetTokenExpires { get; set; }
-
-        public int RoleId { get; set; }
-        public Role Role { get; set; }
-        public ICollection<DetailClass> DetailClasses { get; set; }
-
-        public List<Exam> Exams { get; set; }
-        public int ResultLearningId { get; set; }
-        public ResultLearning ResultLearning { get; set; }
-
     }
 }

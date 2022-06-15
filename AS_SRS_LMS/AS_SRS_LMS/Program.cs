@@ -1,6 +1,6 @@
 using AS_SRS_LMS;
 using AS_SRS_LMS.Data;
-using AS_SRS_LMS.Models;
+using AS_SRS_LMS.Service;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -13,9 +13,9 @@ builder.Services.AddDbContext<DataContext>(options =>
     
 });
 builder.Services.AddScoped<IUserRegister, UserRegister>();
-//builder.Services.AddTransient<IUserRegister, UserRegister>();
-//builder.Services.AddScoped<IUserRegister, UserRegister>();
-//builder.Services.AddSingleton<IUserRegister, UserRegister>();
+builder.Services.AddScoped<ISubjectManager, SubjectManager>();
+builder.Services.AddScoped<IClassManager, ClassManager>();
+
 
 
 builder.Services.AddControllers();
