@@ -9,10 +9,11 @@ namespace AS_SRS_LMS.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ClassId { get; set; }
         public string ClassName { get; set; }
-        public bool Status { get; set; }
+        public bool? Status { get; set; }
         public string? Link { get; set; }
 
         public ICollection<DetailClass> DetailClasses { get; set; }
+        public ICollection<Schedule> Schedules { get; set; }
 
     }
 }

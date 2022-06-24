@@ -1,5 +1,6 @@
 using AS_SRS_LMS;
 using AS_SRS_LMS.Data;
+using AS_SRS_LMS.Models;
 using AS_SRS_LMS.Service;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,8 +16,11 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddScoped<IUserRegister, UserRegister>();
 builder.Services.AddScoped<ISubjectManager, SubjectManager>();
 builder.Services.AddScoped<IClassManager, ClassManager>();
+builder.Services.AddScoped<IScheduleRepo, ScheduleRepo>();
+builder.Services.AddScoped<IExamManager,ExamManager>();
 
-
+ConfigurationManager configuration = builder.Configuration;
+builder.Services.Configure<MailSettings>(configuration.GetSection("MailSettings"));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

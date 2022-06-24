@@ -1,5 +1,6 @@
 ﻿using AS_SRS_LMS.Data;
 using AS_SRS_LMS.Models;
+using AS_SRS_LMS.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,30 +11,68 @@ namespace AS_SRS_LMS.Controllers
     public class ClassController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly IClassManager _classManager;
 
-        public ClassController(DataContext context)
+        public ClassController(DataContext context, IClassManager classManager)
         {
             _context = context;
+            _classManager = classManager;
         }
         [HttpPost("create-class")]
-        public async Task<IActionResult> Register(ClassAddRequest request)
+        public IActionResult AddClass(ClassRequest request)
         {
-            if (_context.Classes.Any(u => u.ClassName == request.ClassName))
+            _classManager.AddClass(request);
+            return Ok(new { massage = "Created Successful !!!" });
+        }
+        [HttpGet("detail-class")]
+        public IActionResult DetailClass(int id)
+        {
+            var cla = _classManager.DetailClass(id);
+            if (id == 0)
             {
-                return BadRequest("Class already exists");
+                return BadRequest("Vui lòng nhập id lớp học");
             }
-            
-            var cla = new Class
+            if (cla == null)
             {
-                ClassName = request.ClassName,
-                StartDate = request.StartDate,
-                EndDate = request.EndDate,
-                SubjectId = request.SubjectId,
-                
-            };
-            _context.Classes.Add(cla);
-            await _context.SaveChangesAsync();
-            return Ok("Class Successfully created");
+                return BadRequest("Ko tìm thấy lớp học");
+            }
+            return Ok(cla);
+        }
+        [HttpGet("get-all-class")]
+        public ActionResult<IEnumerable<Class>> GetAllSubject()
+        {
+            var cla = _classManager.GetAllClass();
+            return Ok(cla);
+        }
+        [HttpPost("delete-class")]
+        public IActionResult Delete(int id)
+        {
+            var cla = _classManager.DetailClass(id);
+            if (id == 0)
+            {
+                return BadRequest("Vui lòng nhập id môn học");
+            }
+            if (cla == null)
+            {
+                return BadRequest("Ko tìm thấy môn học");
+            }
+            _classManager.RemoveClass(id);
+            return Ok(new { massage = "Delete Successful !!!" });
+        }
+        [HttpPut("update-class")]
+        public IActionResult Update(int id, ClassRequest request)
+        {
+            var cla = _classManager.DetailClass(id);
+            if (id == 0)
+            {
+                return BadRequest("Vui lòng nhập id lớp học");
+            }
+            if (cla == null)
+            {
+                return BadRequest("Ko tìm thấy lớp học");
+            }
+            _classManager.UpdateClass(id, request);
+            return Ok(new { massage = "Update Successful !!!" });
         }
     }
 }

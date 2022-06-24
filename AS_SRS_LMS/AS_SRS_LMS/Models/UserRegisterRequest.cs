@@ -6,6 +6,10 @@ namespace AS_SRS_LMS.Models
     {
         [Required, EmailAddress]
         public string Email { get; set; } = string.Empty;
+
+        [Required]
+        public string PhoneNumber { get; set; }
+
         [Required, MinLength(6, ErrorMessage = "Please enter at least 6 characters!!!")]
         public string Password { get; set; } = string.Empty;
         [Required, Compare("Password")]

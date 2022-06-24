@@ -28,7 +28,7 @@ namespace AS_SRS_LMS.Models
         public Role Role { get; set; }
         public ICollection<DetailClass> DetailClasses { get; set; }
 
-        public List<Exam> Exams { get; set; }
+        public List<Result> Results { get; set; }
         public int ResultLearningId { get; set; }
         public ResultLearning ResultLearning { get; set; }
 

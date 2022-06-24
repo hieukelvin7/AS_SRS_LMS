@@ -3,18 +3,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AS_SRS_LMS.Models
 {
-    public class ContentExam
+    public class Result
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ContentId { get; set; }
+        public int ResultId { get; set; }
         public float Score { get; set; }
-        public int NumberCorrect { get; set; }
+
+        public int UserId { get; set; }
+        public User User { get; set; }
         public int ExamId { get; set; }
         public Exam Exam { get; set; }
-        public List<Question> Questions { get; set; }
-        public int SubjectId { get; set; }
-        public Subject Subject { get; set; }
-
     }
 }

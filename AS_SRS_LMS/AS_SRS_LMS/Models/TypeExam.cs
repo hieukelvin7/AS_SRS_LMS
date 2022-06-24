@@ -8,7 +8,9 @@ namespace AS_SRS_LMS.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TypeExamId { get; set; } 
-        public int TypeName { get; set; }
+        public string TypeName { get; set; }
+        public float Time { get; set; }
+        public string DVT { get; set; }
         public List<Exam> Exam { get; set; }
     }
 }
